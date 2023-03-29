@@ -26,6 +26,7 @@ a {
 }
 
 .header_left, .header_right {
+    padding: 0 0 0 1vw;
     flex: 1;
 }
 
