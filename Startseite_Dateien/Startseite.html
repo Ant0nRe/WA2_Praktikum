@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <title>Startseite</title>
         <link rel="stylesheet" type="text/css" href="Startseite1.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
     <body>
         <section>
@@ -17,10 +17,10 @@
                     <a href="Startseite.html"><i class="fas fa-home fa-3x"></i></a>
                 </div>
                 <div class="header_center">
-                    <a href="Startseite.html"><img src="Bilder/Kino_logo.png"></a>
+                    <a href="Startseite.html"><img src="Bilder/Kino_logo.png" alt="logo"></a>
                 </div>
                 <div class="header_right"></div>
-            <div>
+            </div>
         </section>
 
         <section>
@@ -28,7 +28,7 @@
             <a class="prev" onclick="plusSlides(-1)">❮</a>
             <a class="next" onclick="plusSlides(1)">❯</a>
                 <div class="image">
-                    <img src="Bilder/John_Wick_4.jpg">
+                    <img src="Bilder/John_Wick_4.jpg" alt="johnwick">
                 </div>
                 <div class="description">
                     <h2>John Wick 4</h2>
@@ -42,7 +42,7 @@
                 </div>
             
                 <div class="image">
-                    <img src="Bilder/Operation_Fortune.jpg">
+                    <img src="Bilder/Operation_Fortune.jpg " alt="operation">
                 </div>
                 <div class="description">
                     <h2>Operation Fortune</h2>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="image">
-                    <img src="Bilder/super-mario-film.jpg">
+                    <img src="Bilder/super-mario-film.jpg" alt="mario">
                 </div>
                 <div class="description">
                     <h2>Super Mario Bros</h2>
@@ -71,19 +71,49 @@
             </div>
         </section>
 
-        <section class="footer">
+        <footer>
             <div class="impressum">
                 <p>Impressum</p>
                 <p>Kontakt</p>
                 <p>Adresse</p>
             </div>
-            <div class="oeffnungszeiten">
-                <h4>Öffnungszeiten</h4>
-                <p>Platzhalter&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Platzhalter</p>
-            </div>
-        </section>
 
-        <script type="text/javascript" src="Startseite2.js"></script>
+            <div class="impressum2">
+                <p>Impressum2</p>
+                <p>Kontakt</p>
+                <p>Adresse</p>
+            </div>
+
+            <div class="impressum3">
+                <p>Impressum3</p>
+                <p>Kontakt</p>
+                <p>Adresse</p>
+            </div>
+            
+            <div class="oeffnungszeiten">
+                <h2>Öffnungszeiten</h2>
+                <div class="row">
+                    <div class="column">
+                        <table>
+                            <tr><th>Montag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Dientag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Mittwoch</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Donnerstag</th><td>12:00 - 23:00 Uhr</td></tr>
+                        </table>
+                    </div>
+                        
+                    <div class="column">   
+                        <table>
+                            <tr><th>Freitag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Samstag</th><td>09:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Sonntag</th><td>09:00 - 23:00 Uhr</td></tr>
+                        </table>
+                    </div> 
+                </div>
+            </div>
+        </footer>
+
+        <script src="Startseite2.js"></script>
     </body>
 
 </html>
