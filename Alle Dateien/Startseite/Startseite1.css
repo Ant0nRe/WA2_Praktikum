@@ -155,9 +155,11 @@ a {
 }
 
 footer {
+    position: relative;
     width: 100%;
-    height: 16vh;
+    min-height: 15vh;
     background-color:#841617;
+    overflow: hidden;
 }
 
 .impressum {
