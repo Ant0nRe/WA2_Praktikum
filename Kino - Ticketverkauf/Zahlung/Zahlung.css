@@ -117,7 +117,7 @@ input[type=number] {
     width: 330px;
     background: brown;
     margin-left: 60px;
-    bottom: 700px;
+    margin-bottom: 1140px;
     position: sticky;
     top: 50px;
     min-height: 10vh;
