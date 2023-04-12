@@ -46,11 +46,12 @@ a {
 .dropdown {
     position: relative;
     display: inline-block;
-    padding-left: 3vw; 
+    padding-left: 3vw;
+    padding-bottom: 1vw;
   }
 
 .dropbtn {
-    background-color: #01796F;
+    background-color: #A51C30;
     color: white;
     padding: 12px;
     font-size: 16px;
@@ -83,7 +84,7 @@ a {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #00A550;
+    background-color: #841617;
 }
 
 .middle {
@@ -165,9 +166,14 @@ a {
     font-size: 0.9rem;
 }
 
-.container {
+.containerSeats {
     margin: 30px;
     width: 33vw;
+}
+
+.container2 {
+    min-height: 85vh;
+    width: 100%;
 }
 
 .row {
@@ -304,6 +310,8 @@ footer {
     overflow: hidden;
 }
 
+
+
 .impressum {
     float: left;
     padding: 0.3vh 0 0 1.5vh;
@@ -327,7 +335,7 @@ footer {
     display: flex;
     margin-left: -15px;
 }
-  
+ 
 .column {
     flex: 50%;
     padding: 2px;
