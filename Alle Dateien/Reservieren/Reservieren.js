@@ -13,12 +13,12 @@ function timedropd(id) {
 }
 
 const place = document.getElementById("place");
-const container = document.querySelector('.container');
+const containerSeats = document.querySelector('.containerSeats');
 let count = document.getElementById('count').innerHTML;
 let total = document.getElementById('total').innerHTML;
 let price = 9;
 
-container.addEventListener("click", (event) => {
+containerSeats.addEventListener("click", (event) => {
     if (event.target.classList.contains('seat')) {
         // Falls Sitz angeklickt -> weiß
         event.target.classList.replace('seat', 'seat-sold');
