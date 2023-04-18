@@ -24,117 +24,138 @@
         </section>
         
         <section>
-            <div class="container2">
-                <div class="titel">
-                    <h1> RESERVIEREN</h1>
-                </div>
-                <div class="dropdown">
-                    <button class="dropbtn">Datum</button>
-                    <div class="dropdown-content">
-                    <p id="datedropd1" onclick="datedropd(this.id)">10. April</p>
-                    <p id="datedropd2" onclick="datedropd(this.id)">12. April</p>
-                    </div>
-                </div>
-                <input type="text" class="droptext" id="date" readonly>
-
-                <div class="dropdown">
-                    <button class="dropbtn">Uhrzeit</button>
-                    <div class="dropdown-content">
-                    <p id="timedropd1" onclick="timedropd(this.id)">18.00 Uhr</p>
-                    <p id="timedropd2" onclick="timedropd(this.id)">20.00 Uhr</p>
-                    </div>
-                </div>
-                <input type="text" class="droptext" id="time" readonly>
-
-                <div class="middle">
-                    <div class="movieinfo">
-                        <div class="description">
-                            <h2>John Wick 4</h2>
-                                <p>Profikiller John Wick (Keanu Reeves) hat mit seinem Rachefeldzug die halbe Unterwelt gegen sich aufgebracht. Die Hohe Kammer hat genug. Sie setzt den Marquis de Gramont (Bill Skarsgård) mit allen Vollmachten ein, um Wick endgültig zur Strecke zu bringen. Der verlangt erst einmal Rechenschaft von allen, die Wick geholfen haben – wie Hotelbetreiber Winston (Ian McShane) und dessen loyalem Concierge Charon (Lance Reddick). Der legendäre Auftragskiller versteckt sich derweil bei seinem alten Freund Shimazu (Hiroyuki Sanada) in Osaka. Doch dort spüren ihn die Männer des Marquis bald auf. Die werden ausgerechnet von Johns einst bestem Freund begleitet: Der blinde Caine (Donnie Yen) ist eigentlich ausgestiegen, doch wird nun gezwungen, Jagd auf Wick zu machen.</p>
-                            <div> 
-                                <div class="laufzeit">
-                                    <p>2h 49min</p>
-                                </div>  
-                                <div class="fsk">
-                                    <p>FSK 18</p>
-                                </div>
+            <div class="container3">
+                <div class="box">
+                    <div class="box-row">
+                        <div class="box-cell box1">
+                            <h2>JOHN WICK 4</h2>
+                            <div class="laufzeit">
+                                <p>Preis: 9,00€ pro Karte</p>
                             </div> 
-                        </div>
-                    </div>
-                  
-                    <div class="containerSeats">
-                        <div class="row">
-                            <div class="seat" id="1"></div>
-                            <div class="seat" id="2"></div>
-                            <div class="seat" id="3"></div>
-                            <div class="seat" id="4"></div>
-                            <div class="seat" id="5"></div>
-                            <div class="seat" id="6"></div>
-                            <div class="seat" id="8"></div>
-                            <div class="seat" id="7"></div>
-                        </div>
-    
-                        <div class="row">
-                            <div class="seat" id="9" ></div>
-                            <div class="seat" id="10"></div>
-                            <div class="seat" id="11"></div>
-                            <div class="seat" id="12"></div>
-                            <div class="seat" id="13"></div>
-                            <div class="seat" id="14"></div>
-                            <div class="seat" id="15"></div>
-                            <div class="seat" id="16"></div>
-                        </div>
-    
-                        <div class="row">
-                            <div class="seat" id="17"></div>
-                            <div class="seat" id="18"></div>
-                            <div class="seat" id="19"></div>
-                            <div class="seat" id="20"></div>
-                            <div class="seat" id="21"></div>
-                            <div class="seat" id="22"></div>
-                            <div class="seat" id="23"></div>
-                            <div class="seat" id="24"></div>
-                        </div>
-    
-                        <div class="row">
-                            <div class="seat" id="25" ></div>
-                            <div class="seat" id="26"></div>
-                            <div class="seat" id="27"></div>
-                            <div class="seat" id="28"></div>
-                            <div class="seat" id="29"></div>
-                            <div class="seat" id="30"></div>
-                            <div class="seat" id="31"></div>
-                            <div class="seat" id="32"></div>
-                        </div>
-    
-                        <div class="row">
-                            <div class="seat" id="33"></div>
-                            <div class="seat" id="34"></div>
-                            <div class="seat" id="35"></div>
-                            <div class="seat" id="36"></div>
-                            <div class="seat" id="37"></div>
-                            <div class="seat" id="38"></div>
-                            <div class="seat" id="39"></div>
-                            <div class="seat" id="40"></div>
-                        </div>
+                            <div class="laufzeit">
+                                <p>Laufzeit: 169 min</p>
+                            </div>  
+                            <div class="fsk">
+                                <p>Altersfreigabe: FSK 18</p>
+                            </div>
 
-                        <div class="screen">
-                            <p>LEINWAND</p>
+                            <h4>MONTAG</h4>
+                            <div class="clickwrapper">
+                            <div class="wrapper">
+                                <div class="boxtime a" id="M13" onclick="change('M13')">13:00</div>
+                                <div class="boxtime b" id="M16" onclick="change('M16')">16:00</div>
+                                <div class="boxtime c" id="M19" onclick="change('M19')">19:00</div>
+                            </div>
+
+                            <h4>MITTWOCH</h4>
+                            <div class="wrapper">
+                                <div class="boxtime a" id="Mi13" onclick="change('Mi13')">13:00</div>
+                                <div class="boxtime b" id="Mi16" onclick="change('Mi16')">16:00</div>
+                                <div class="boxtime c" id="Mi19" onclick="change('Mi19')">19:00</div>
+                            </div>
+
+                            <h4>FREITAG</h4>
+                            <div class="wrapper">
+                                <div class="boxtime a" id="F13" onclick="change('F13')">13:00</div>
+                                <div class="boxtime b" id="F16" onclick="change('F16')">16:00</div>
+                                <div class="boxtime c" id="F19" onclick="change('F19')">19:00</div>
+                            </div>
+                            </div>
+                        </div>
+                     
+                        <div class="box-cell box2">
+                            <table class="containerSeats">
+                                <thead >
+                                    <tr class="row">
+                                        <td></td>
+                                        <td class="number">1</td>
+                                        <td class="number">2</td>
+                                        <td class="number">3</td>
+                                        <td class="number">4</td>
+                                        <td class="number">5</td>
+                                        <td class="number">6</td>
+                                        <td class="number">7</td>
+                                        <td class="number">8</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row">
+                                        <td>E</td>
+                                        <td class="seat" id="E1"></td>
+                                        <td class="seat" id="E2"></td>
+                                        <td class="seat" id="E3"></td>
+                                        <td class="seat" id="E4"></td>
+                                        <td class="seat" id="E5"></td>
+                                        <td class="seat" id="E6"></td>
+                                        <td class="seat" id="E7"></td>
+                                        <td class="seat" id="E8"></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td>D</td>
+                                        <td class="seat" id="D1"></td>
+                                        <td class="seat" id="D2"></td>
+                                        <td class="seat" id="D3"></td>
+                                        <td class="seat" id="D4"></td>
+                                        <td class="seat" id="D5"></td>
+                                        <td class="seat" id="D6"></td>
+                                        <td class="seat" id="D7"></td>
+                                        <td class="seat" id="D8"></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td>C</td>
+                                        <td class="seat" id="C1"></td>
+                                        <td class="seat" id="C2"></td>
+                                        <td class="seat" id="C3"></td>
+                                        <td class="seat" id="C4"></td>
+                                        <td class="seat" id="C5"></td>
+                                        <td class="seat" id="C6"></td>
+                                        <td class="seat" id="C7"></td>
+                                        <td class="seat" id="C8"></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td>B</td>
+                                        <td class="seat" id="B1"></td>
+                                        <td class="seat" id="B2"></td>
+                                        <td class="seat" id="B3"></td>
+                                        <td class="seat" id="B4"></td>
+                                        <td class="seat" id="B5"></td>
+                                        <td class="seat" id="B6"></td>
+                                        <td class="seat" id="B7"></td>
+                                        <td class="seat" id="B8"></td>
+                                    </tr>
+                                    <tr class="row">
+                                        <td>A</td>
+                                        <td class="seat" id="A1"></td>
+                                        <td class="seat" id="A2"></td>
+                                        <td class="seat" id="A3"></td>
+                                        <td class="seat" id="A4"></td>
+                                        <td class="seat" id="A5"></td>
+                                        <td class="seat" id="A6"></td>
+                                        <td class="seat" id="A7"></td>
+                                        <td class="seat" id="A8"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="screen">
+                                <p>LEINWAND</p>
+                            </div>
+                        </div>
+                     
+                        <div class="box-cell box3">
+                            <div class="description">
+                                <h2>Reservierungen</h2>
+                                <ul id="place"></ul>
+                                <div class="gesamt">
+                                    <p><span id="count">0</span> Plätze reserviert für <span id="total">0</span>,00€</p>
+                                    <p>(Maximal 10 Reservierungen möglich)</p>
+                                </div>
+                                <div class="reservation-button">
+                                    <a href="../Zahlung/Zahlungsseite.html" class="reservation">Bestellen</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                
-                <div class="resinfo">
-                    <div class="description">
-                        <h2>Bestellung</h2>
-                        <ul id="place"></ul>
-                        <div class="gesamt">
-                            <p><span id="count">0</span> Plätze reserviert für <span id="total">0</span>€</p>
-                        </div>
-                        <div class="reservation-button">
-                            <a href="../Zahlung/Zahlungsseite.html" class="reservation">Bestellen</a>
-                        </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </section>
