@@ -13,6 +13,7 @@ function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("image");
     let slides2 = document.getElementsByClassName("description");
+    let slides3 = document.getElementsByClassName("uhrzeit")
     if (n > slides.length) {
         slideIndex = 1;
     }    
@@ -21,8 +22,10 @@ function showSlides(n) {
     }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-        slides2[i].style.display = "none";   
+        slides2[i].style.display = "none";  
+        slides3[i].style.display = "none";    
     }
     slides[slideIndex-1].style.display = "block";
-    slides2[slideIndex-1].style.display = "block";  
+    slides2[slideIndex-1].style.display = "block"; 
+    slides3[slideIndex-1].style.display = "block"; 
 }
