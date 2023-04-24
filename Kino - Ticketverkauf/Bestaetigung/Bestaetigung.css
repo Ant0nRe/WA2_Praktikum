@@ -43,22 +43,16 @@ body {
     height: 60px;
 }
 
-.top-right p {
-    margin: 0;
-}
-
-.top-right .graphic-path {
-    height: 40px;
-    position: relative;
-}
-
 .top-right .graphic-path p {
+    align-items: center;
+    justify-content: center;
+    display: flex;
     color: var(--mix);
-    height: 40px;
+    height: 45px;
     text-transform: uppercase;
     background-color: var(--themeColor);
     font: 26px;
-    padding: 8px 0 0 10px;
+    padding: 10px;
 }
 
 /* User Store Section*/
@@ -110,7 +104,7 @@ tr td:first-child {
 
 /* Balance Info Section */
 .balance-info .table td {
-    padding: 0;
+    padding: 2px;
     border: 0;
 }
 
@@ -132,26 +126,17 @@ tfoot td {
     position: absolute;
     height: 165px;
     bottom: 85px;
-    left: 200px;
+    left: 275px;
 }
 
 /* Footer Section */
 footer {
-    text-align: center;
     position: absolute;
-    bottom: 30px;
-    left: 100px;
-    background: var(--mix);
-}
-
-footer a {
-    color: var(--themeColor);
+    bottom: 0;
+    right: 40%;
 }
 
 footer p {
-    padding: 6px; 
-    border: 3px solid var(--darkWhite);
-    background-color: var(--mix);
-    display: inline-block;
+    padding: 6px;
 }
 
