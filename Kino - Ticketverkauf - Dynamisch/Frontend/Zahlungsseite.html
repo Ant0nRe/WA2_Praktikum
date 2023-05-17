@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Zahlungsseite</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="Zahlungsseite.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <section>
+            <div class="header">
+                <div class="header_left">
+                    <a href="Startseite.html"><i class="fas fa-home fa-3x"></i></a>
+                </div>
+                <div class="header_center">
+                    <a href="Startseite.html"><img src="http://localhost:8000/startseite/Kino_logo.png" alt="logo"></a>
+                </div>
+                <div class="header_right"></div>
+            </div>
+        </section>
+
+        <section>
+            <div class="navbar">
+                <a href="Startseite.html">Startseite</a>
+                <a href="#">Impressum</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <form id="form">
+                <h3 class="title">Rechnungsdetails</h3>
+                <div class="twoinputBox">
+                    <input type="text" placeholder="Vorname" id="leftbox" required>
+                    <input type="text" placeholder="Nachname" required>
+                </div> 
+                <div class="inputBox">
+                    <input type="email" placeholder="E-Mail-Adresse" required>  
+                </div>  
+                <div class="inputBox">
+                    <input type="text" placeholder="Straße - Hausnummer" required>
+                </div>                        
+                <div class="inputBox">
+                    <input type="number" placeholder="Postleitzahl" required>
+                </div> 
+                <div class="inputBox">
+                    <input type="text" placeholder="Stadt" required>
+                </div>  
+                <div class="inputBox">
+                    <input type="text" placeholder="Bundesland" required>
+                </div>
+
+                <h3 class="title" >Zahlungsart</h3>
+                    <input type="radio" id="paypal" name="payment" value="PayPal" class="inputradio" checked onclick="showBoxes1()">
+                    <label for="paypal">PayPal <img src="http://localhost:8000/startseite/paypal.jpg" alt="paypallogo"></label><br>
+                    <input type="radio" id="kreditkarte" name="payment" value="kreditkarte" class="inputradio" onclick="showBoxes2()">
+                    <label for="kreditkarte">Kreditkartenzahlung</label>
+                    <div id="paypalbox">
+                        <div class="inputBox">
+                            <span>E-Mail-Adresse:</span>
+                            <input type="email" placeholder="E-Mail-Adresse" required>  
+                        </div>  
+                    </div>
+                    <div id="kreditkartenbox">
+                        <div class="inputBox">
+                            <span>Kartennummer:</span>
+                            <input type="number" placeholder="1111 2222 3333 4444" required>
+                        </div> 
+                        <div class="inputBox">
+                            <span>Gültig bis:</span>
+                            <input type="text" placeholder="MM/JJ" pattern="MM/JJ" title="Falsche Eingabe" required>
+                        </div>
+                        <div class="inputBox">
+                            <span>CVC:</span>
+                            <input type="number" placeholder="Prüfziffer" required>
+                        </div> 
+                    </div>
+                    <a href="Bestaetigung.html">
+                        <input type="button" value="Zahlungspflichtig bestellen" class="submit-btn">
+                    </a>
+            </form>  
+        </div>
+
+        <footer>
+            <div class="impressum">
+                <h4>Impressum</h4>
+                <p>Geschäftsführer</p>
+                <p>Kontakt</p>
+                <p>Adresse</p>
+                
+            </div>
+
+            <div class="impressum2">
+                <h4><br></h4>
+                <p>Max Mustermann</p>
+                <p>E-Mail: max@muster.de | Telefon: 01234-789456 | Fax: 1234-56789</p>
+                <p>Mustestraße 123 72458 Albstadt Ebingen</p>
+            </div>
+            
+            <div class="oeffnungszeiten">
+                <h2>Öffnungszeiten</h2>
+                <div class="row-footer">
+                    <div class="column">
+                        <table>
+                            <tr><th>Montag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Dientag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Mittwoch</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Donnerstag</th><td>12:00 - 23:00 Uhr</td></tr>
+                        </table>
+                    </div>
+                        
+                    <div class="column">   
+                        <table>
+                            <tr><th>Freitag</th><td>12:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Samstag</th><td>09:00 - 23:00 Uhr</td></tr>
+                            <tr><th>Sonntag</th><td>09:00 - 23:00 Uhr</td></tr>
+                        </table>
+                    </div> 
+                </div>
+            </div>
+        </footer>
+        <script src="Zahlungsseite.js"></script>
+    </body>

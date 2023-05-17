@@ -1,0 +1,225 @@
+* {
+    font-family: 'Poppins';
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body {
+    background-color: #181818;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.header {
+    width: 100%;
+    height: 15vh;
+    background-color:#841617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header_left, .header_right {
+    padding: 0 0 0 1vw;
+    flex: 1;
+}
+
+.header_left i {
+    color: #181818;
+}
+
+.header img {
+    width: auto;
+    height: 10vh;
+}
+
+.navbar {
+    width: 100%;
+    height: 40px;
+    background-color:#841617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.navbar a {
+    color: #f2f2f2;
+    padding: 0 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: #181818;
+    min-height: 85vh;
+    width: 100%;
+}
+
+.container form {
+    padding: 20px;
+    width: 34vw;
+    background: brown;
+}
+
+.title {
+    font-size: 20px;
+    color: #e4e4e4;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.twoinputBox {
+    display: inline-block;
+    margin: 12px 0;
+    color: #e4e4e4;
+}
+
+.twoinputBox input {
+    height: 4.5vh;
+    width: 15.5vw;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+#leftbox {
+    margin-right: 10px;
+}
+
+.inputBox input {
+    margin: 12px 0;
+    height: 4.5vh;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.inputBox span {
+    color: #e4e4e4;
+    font-weight: 550;
+}
+
+.inputradio {
+    width: auto;
+    height: 2.5vh;
+    display: inline;
+    margin: 8px 0;
+    vertical-align: middle;
+}
+
+label {
+    color: #e4e4e4;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+label img {
+    height: 3vh;
+    vertical-align: middle;
+    padding-left: 5px;
+}
+
+#kreditkartenbox {
+    display: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding:12px;
+    font-size: 17px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #e4e4e4;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.container form .submit-btn:hover {
+    background: #660000;
+}
+
+.containerInfo {
+    min-width: 17vw;
+    background: brown;
+    margin-left: 60px;
+    bottom: 700px;
+    position: sticky;
+    margin-top: 25px;
+    min-height: 10vh;
+    border-radius: 7px;
+}
+
+.containerInfo h3 {
+    color: #e4e4e4;
+    padding-left: 15px;
+    margin: 10px 0;
+}
+
+.tableInfo {
+    margin-bottom: 10px;
+    color: #e4e4e4;
+}
+
+footer {
+    width: 100%;
+    min-height: 15vh;
+    background-color: #841617;
+    overflow: hidden;
+}
+
+.impressum {
+    float: left;
+    padding: 0.3vh 0 0 1.5vh;
+}
+
+.impressum h4, .impressum2 h4{
+    margin-bottom: 10px;
+}
+
+.impressum2, .impressum3 {
+    float: left;
+    padding: 0.3vh 0 0 7.5vw;
+}
+
+.oeffnungszeiten {
+    float: right;
+    padding: 0.3vh 3vw 0 0;
+}
+
+.oeffnungszeiten h4 {
+    font-weight: 500;
+}
+
+.row-footer {
+    display: flex;
+    margin-left: -15px;
+}
+  
+.column {
+    flex: 50%;
+    padding: 2px;
+    margin-left: 15px;
+}
+
+th,td {
+    text-align: left;
+    white-space: nowrap;
+}
+
+td {
+    padding-left: 15px;
+    font-weight: 400;
+}
