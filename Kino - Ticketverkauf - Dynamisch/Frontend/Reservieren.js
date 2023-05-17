@@ -152,10 +152,11 @@ function showMiddleSection(response) {
 
     let objct = [];    
     const reservations = document.querySelector('.reservation');
-    reservations.addEventListener('click', () => {
+    reservations.addEventListener('click', (e) => {
         const boxtimesold = document.querySelector('.boxtime-sold');
         let selectedpreis = total;
         if (!boxtimesold || selectedpreis == 0) {
+            e.preventDefault();
             alert('Bitte Uhrzeit und Sitzplatz anklicken');
         }
         else {
