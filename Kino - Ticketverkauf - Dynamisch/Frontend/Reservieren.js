@@ -140,16 +140,9 @@ function showMiddleSection(response) {
         }
     });
 
-    let IdArr = [];
-        for (i = 0; i < response.length; i++) {
-            let obj2 = response[i];
-            for (j = 0; j < elementIds.length; j++) {
-                if (film.titel == obj2.titel && elementIds[j] == obj2.platzid) {
-                    IdArr[j] = obj2.id;
-                }
-            }
-        }
-
+    
+        
+    let IdArr = []; 
     let objct = [];    
     const reservations = document.querySelector('.reservation');
     reservations.addEventListener('click', (e) => {
@@ -160,6 +153,14 @@ function showMiddleSection(response) {
             alert('Bitte Uhrzeit und Sitzplatz anklicken');
         }
         else {
+            for (i = 0; i < response.length; i++) {
+                let obj2 = response[i];
+                for (j = 0; j < elementIds.length; j++) {
+                    if (film.titel == obj2.titel && elementIds[j] == obj2.platzid) {
+                        IdArr[j] = obj2.id;
+                    }
+                }
+            }
             const boxtimes = document.querySelector('.boxtime-sold').innerHTML;
             const datum = document.querySelector('.boxtime-sold').title;
             setJSONSessionItem("platz", elementIds);
@@ -185,7 +186,7 @@ function showMiddleSection(response) {
         }
     });
 }        
-    
+   
 function setSessionItem(label, value) {
     sessionStorage.setItem(label, value);
 }
