@@ -60,13 +60,16 @@ try {
     const TOPLEVELPATH = '/api';
     console.log('Binding enpoints, top level Path at ' + TOPLEVELPATH);
     
-    serviceRouter = require('./services/startseite.js');
+    serviceRouter = require('./services/film.js');
+    app.use(TOPLEVELPATH, serviceRouter);
+
+    serviceRouter = require('./services/filmdatum.js');
     app.use(TOPLEVELPATH, serviceRouter);
 
     serviceRouter = require('./services/reservierungsitze.js');
     app.use(TOPLEVELPATH, serviceRouter);
 
-    serviceRouter = require('./services/kunde.js');
+    serviceRouter = require('./services/reservierer.js');
     app.use(TOPLEVELPATH, serviceRouter);
     
     // send default error message if no matching endpoint found
