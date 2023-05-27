@@ -115,6 +115,12 @@ a {
     font-size: 0.9rem;
 }
 
+.uhrzeit {
+    padding: 10px;
+    height: 4vh;
+    margin-left: 1vw;
+}
+
 .box-cell.box1 h4 {
     margin: 10px 0;
     padding-left: 1vw;
@@ -183,7 +189,7 @@ a {
 .number {
     background-color: #181818;
     height: 6vh;
-    width: 5vw;
+    width: 2vw;
     margin: auto;
     display: flex;
     align-items: center;

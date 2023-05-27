@@ -20,155 +20,171 @@ $(document).ready(function() {
 
 function showMiddleSection(response) {
     const divboxc1 = $('<div class="box-cell box1">');
+    const divboxc2 = $('<div class="box-cell box2">');
     const divlaufz = $('<div class="laufzeit">');
     const divpreis = $('<div class="preis">');
     const divfsk = $('<div class="fsk">');
     const divcwra = $('<div class="clickwrapper">');
-    const divwra1 = $('<div class="wrapper">');
-    const divwra2 = $('<div class="wrapper">');
-    const divwra3 = $('<div class="wrapper">');
     const film = getJSONSessionItem('film');
+    const data = getJSONSessionItem('data');
+    let elementIds = [];
+    let day = [];
+    let time = [];     
+    let statusArr = [];    
+    let IdArr = []; 
+    let objct = []; 
 
-    divboxc1.append($('<h2>').text(film.titel));
+    // Informationen zum Film
+    divboxc1.append($('<h2>').text(film.Name));
     divboxc1.append(divlaufz);
-        divlaufz.append($('<p>').text('Preis: ' + film.preis + ',00€ pro Ticket'));
+        divlaufz.append($('<p>').text('Preis: ' + film.Preis + ',00€ pro Ticket'));
     divboxc1.append(divpreis);
-        divpreis.append($('<p>').text('Laufzeit: ' + film.laufzeit + ' min'));
+        divpreis.append($('<p>').text('Laufzeit: ' + film.Dauer + ' min'));
     divboxc1.append(divfsk);
-        divfsk.append($('<p>').text('Altersfreigabe: FSK ' + film.fsk));
+        divfsk.append($('<p>').text('Altersfreigabe: FSK ' + film.FSK));
+    divboxc1.append($('<h4 class="uhrzeit">').text("Bitte Uhrzeit auswählen"));
         
-    divboxc1.append(divcwra);
-        divcwra.append($('<h4>').text(film.tag1));
-        divcwra.append(divwra1);
-            divwra1.append($('<div class="boxtime a" id="M13" title="' + film.tag1 + '" onclick="change(\'M13\')">').text(film.uhrzeit1));
-            divwra1.append($('<div class="boxtime b" id="M16" title="' + film.tag1 + '" onclick="change(\'M16\')">').text(film.uhrzeit2));
-            divwra1.append($('<div class="boxtime c" id="M19" title="' + film.tag1 + '" onclick="change(\'M19\')">').text(film.uhrzeit3));
-        divcwra.append($('<h4>').text(film.tag2));
-        divcwra.append(divwra2);
-            divwra2.append($('<div class="boxtime a" id="Mi13" title="' + film.tag2 + '" onclick="change(\'Mi13\')">').text(film.uhrzeit1));
-            divwra2.append($('<div class="boxtime b" id="Mi16" title="' + film.tag2 + '" onclick="change(\'Mi16\')">').text(film.uhrzeit2));
-            divwra2.append($('<div class="boxtime c" id="Mi19" title="' + film.tag2 + '" onclick="change(\'Mi19\')">').text(film.uhrzeit3));
-        divcwra.append($('<h4>').text(film.tag3));
-        divcwra.append(divwra3);
-            divwra3.append($('<div class="boxtime a" id="F13" title="' + film.tag3 + '" onclick="change(\'F13\')">').text(film.uhrzeit1));
-            divwra3.append($('<div class="boxtime b" id="F16" title="' + film.tag3 + '" onclick="change(\'F16\')">').text(film.uhrzeit2));
-            divwra3.append($('<div class="boxtime c" id="F19" title="' + film.tag3 + '" onclick="change(\'F19\')">').text(film.uhrzeit3));
+    //Uhrzeit und Sitzauswahl
 
-    $('#middlesection').prepend(divboxc1);
-
-    const divboxc2 = $('<div class="box-cell box2">');
-    const table = $('<table class="containerSeats">');
-    const thead = $('<thead>');
-    const tbody = $('<tbody>');
-    const tr1 =  $('<tr class="row">');
-    const divscreen = $('<div class="screen">');
-
-    let statusArr = [];
-    for (i = 0; i < response.length; i++) {
-        let obj = response[i];
-        if (film.titel == obj.titel) {
-            statusArr.push(obj.status);
-        }
+    for (let i = 0; i < data.length; i++) {
+        const parts = data[i].split(' ');
+        const dataPart = parts[0] + ' ' + parts[1];
+        const timePart = parts[2];
+        day[i] = dataPart;
+        time[i] = timePart;
     }
 
-    divboxc2.append(table);
-        table.append(thead);
-            thead.append(tr1);
-            tr1.append($('<td>'));
-            for (k = 1; k < 9; k++) {
-                tr1.append($('<td class="number">').text(k));
+    divboxc1.append(divcwra);
+    for (let j = 0; j < data.length;) { 
+        const boxtime = [$('<div class="boxtime a">'), $('<div class="boxtime b">'), $('<div class="boxtime c">')];
+        let d = 0;
+        const divwra = $('<div class="wrapper">');
+            divcwra.append($('<h4>').text(day[j]));
+            for (let k = j; k < day.length && d < 3; k++) {
+                if (day[j] == day[k]) {    
+                    const id = data[k]; 
+                    const boxtimeElement = boxtime[d].text(time[k]).attr('id', id);
+                    boxtimeElement.on('click', function() {
+                        statusArr = [];
+                        divboxc2.empty();
+                        const clickedId = $(this).attr('id');
+                        change(clickedId);    
+                        const boxtimesold = document.querySelector('.boxtime-sold');
+                        if (boxtimesold) {
+                            const id2 = boxtimesold.getAttribute('id');
+                            for (let l = 0; l < response.length; l++) {
+                                const obj = response[l];
+                                if (film.Name == obj.Name && id2 == obj.Datum) {
+                                    statusArr.push(obj.Status);
+                                }
+                            }    
+                        }
+
+        const table = $('<table class="containerSeats">');    
+        const thead = $('<thead>');
+        const tbody = $('<tbody>');
+        const tr1 =  $('<tr class="row">');
+        const divscreen = $('<div class="screen">');
+        divboxc2.append(table);
+            table.append(thead);
+                thead.append(tr1);
+                    tr1.append($('<td>'));
+                    for (let m = 1; m < 9; m++) {
+                        tr1.append($('<td class="number">').text(m));
+                    }
+
+            const letters = ['E', 'D', 'C', 'B', 'A'];
+            table.append(tbody);
+    
+            for (let n = 0; n < letters.length; n++) {
+                const tr2 = $('<tr class="row">');
+                tbody.append(tr2);
+                    tr2.append($('<td>').text(letters[n]));
+                    for (let o = 0; o < 8; o++) {
+                        const index = n*8+o;
+                        tr2.append($('<td class="' + statusArr[index] + '" id="' + letters[n] + (o+1) + '">'));
+                    }
             }
 
-        const letters = ['E', 'D', 'C', 'B', 'A'];
-        table.append(tbody);
-        for (i = 0; i < letters.length; i++) {
-            const tr2 = $('<tr class="row">');
-            tbody.append(tr2);
-                tr2.append($('<td>').text(letters[i]));
-                for (j = 0; j < 8; j++) {
-                    let index = i*8+j;
-                    tr2.append($('<td class="' + statusArr[index] + '" id="' + letters[i] + (j+1) + '">'));
+        divboxc2.append(divscreen);
+            divscreen.append($('<p>').text('LEINWAND'));
+            const place = document.getElementById("place");
+            let count = document.getElementById('count').innerHTML;
+            let total = document.getElementById('total').innerHTML;
+            const containerSeats = document.querySelector('.containerSeats');
+                    
+            containerSeats.addEventListener("click", (event) => {
+                if (event.target.classList.contains('available') && count <= 9) {
+                    // Falls Sitz angeklickt -> weiß
+                    event.target.classList.replace('available', 'selected');
+                    // Sitznummer ins Feld schreiben
+                    const elementId = event.target.id;
+                    const wantedSeat = document.createElement("li");
+                    wantedSeat.id = "wantedSeat" + elementId;
+                    const text = document.createTextNode("Platz " + elementId + " reserviert");
+                    wantedSeat.appendChild(text);
+                    place.appendChild(wantedSeat);
+                    // Preis und Anzahl Plätze erhöhen
+                    count ++;
+                    const countspan = document.getElementById('count');
+                    countspan.innerHTML = count;
+                    total = Number(total) + Number(film.Preis);
+                    const totalspan = document.getElementById('total');
+                    totalspan.innerHTML = total;
+                    elementIds.push(elementId);
+                } 
+                else {
+                    // Falls nochmal Sitz angeklickt -> grau
+                    event.target.classList.replace('selected', 'available');
+                    // Sitznummer aus Feld löschen
+                    const elementId = event.target.id;
+                    const elem = document.getElementById('wantedSeat' + elementId);
+                    elem.parentNode.removeChild(elem);
+                    // Preis und Anzahl Plätze verringern
+                    count --;
+                    const countspan = document.getElementById('count');
+                    countspan.innerHTML = count;
+                    total = Number(total) - Number(film.Preis);
+                    const totalspan = document.getElementById('total');
+                    totalspan.innerHTML = total;
+                    const a = elementIds.indexOf(elementId);
+                    elementIds.splice(a,1);
                 }
-        }
-
-    divboxc2.append(divscreen);
-        divscreen.append($('<p>').text('LEINWAND'));
-
-    divboxc2.insertAfter(divboxc1);
-
-    const place = document.getElementById("place");
-    let count = document.getElementById('count').innerHTML;
-    let total = document.getElementById('total').innerHTML;
-    let elementIds = [];
-    const containerSeats = document.querySelector('.containerSeats');
-    containerSeats.addEventListener("click", (event) => {
-        if (event.target.classList.contains('available') && count <= 9) {
-            // Falls Sitz angeklickt -> weiß
-            event.target.classList.replace('available', 'selected');
-            // Sitznummer ins Feld schreiben
-            let elementId = event.target.id;
-            let wantedSeat = document.createElement("li");
-            wantedSeat.id = "wantedSeat" + elementId;
-            let text = document.createTextNode("Platz " + elementId + " reserviert");
-            wantedSeat.appendChild(text);
-            place.appendChild(wantedSeat);
-            // Preis und Anzahl Plätze erhöhen
-            count ++;
-            let countspan = document.getElementById('count');
-            countspan.innerHTML = count;
-            total = Number(total) + Number(film.preis);
-            let totalspan = document.getElementById('total');
-            totalspan.innerHTML = total;
-            elementIds.push(elementId);
-        } 
-        else {
-            // Falls nochmal Sitz angeklickt -> grau
-            event.target.classList.replace('selected', 'available');
-            // Sitznummer aus Feld löschen
-            let elementId = event.target.id;
-            let elem = document.getElementById('wantedSeat' + elementId);
-            elem.parentNode.removeChild(elem);
-            // Preis und Anzahl Plätze verringern
-            count --;
-            let countspan = document.getElementById('count');
-            countspan.innerHTML = count;
-            total = Number(total) - Number(film.preis);
-            let totalspan = document.getElementById('total');
-            totalspan.innerHTML = total;
-            const a = elementIds.indexOf(elementId);
-            elementIds.splice(a,1);
-        }
-    });
-
+            });
+                    });
+                    divwra.append(boxtime[d].text(time[k]));
+                    d++;
+                }  
+                $('#middlesection').prepend(divboxc1);
+                divboxc2.insertAfter(divboxc1);     
+            }
+        j+=d; 
+        divcwra.append(divwra);
+    }          
     
-        
-    let IdArr = []; 
-    let objct = [];    
     const reservations = document.querySelector('.reservation');
     reservations.addEventListener('click', (e) => {
         const boxtimesold = document.querySelector('.boxtime-sold');
-        let selectedpreis = total;
+        const selectedpreis = total.innerHTML;
         if (!boxtimesold || selectedpreis == 0) {
             e.preventDefault();
             alert('Bitte Uhrzeit und Sitzplatz anklicken');
         }
         else {
-            for (i = 0; i < response.length; i++) {
-                let obj2 = response[i];
-                for (j = 0; j < elementIds.length; j++) {
-                    if (film.titel == obj2.titel && elementIds[j] == obj2.platzid) {
-                        IdArr[j] = obj2.id;
+            const boxtimes = document.querySelector('.boxtime-sold').id;
+            for (let p = 0; p < response.length; p++) {
+                let obj2 = response[p];
+                for (let q = 0; q < elementIds.length; q++) {
+                    if (film.Name == obj2.Name && elementIds[q] == obj2.Platzid && boxtimes == obj2.Datum) {
+                        IdArr[q] = obj2.ID;
                     }
                 }
             }
-            const boxtimes = document.querySelector('.boxtime-sold').innerHTML;
-            const datum = document.querySelector('.boxtime-sold').title;
             setJSONSessionItem("platz", elementIds);
             setSessionItem("gesamtpreis", selectedpreis);
-            setSessionItem("time", boxtimes);
-            setSessionItem("datum", datum);
-            for (l = 0; l < elementIds.length; l++) {
-                objct = {'id': IdArr[l], 'titel': film.titel, 'platzid': elementIds[l], 'status': 'sold' };
+            setSessionItem("date", boxtimes);
+            for (let r = 0; r < elementIds.length; r++) {
+                objct = {'ID': IdArr[r], 'Name': film.Name, 'Datum': boxtimes,'Platzid': elementIds[r], 'Status': 'sold'};
                 $.ajax({
                     url: 'http://localhost:8000/api/reservierungsitze',
                     method: 'put',
@@ -185,48 +201,7 @@ function showMiddleSection(response) {
             }
         }
     });
-}        
-   
-function setSessionItem(label, value) {
-    sessionStorage.setItem(label, value);
-}
-
-function setJSONSessionItem(label, jsonValue) {
-    setSessionItem(label, JSON.stringify(jsonValue));
-}
-
-function getSessionItem(label) {
-    return sessionStorage.getItem(label);
-}
-
-function getJSONSessionItem(label) {
-    var val = getSessionItem(label);
-
-    if (isNullOrUndefined(val)) 
-        return val;
-
-    if (isJSONString(val)) 
-        return tryParseJSONString(val);
-
-    return val;
-}
-
-function tryParseJSONString(str) {
-    try {
-        var obj = JSON.parse(str);
-        if (obj && typeof obj === "object") 
-            return obj;
-    } catch (e) { }
-    return false;
-}
-
-function isJSONString(str) {
-    return tryParseJSONString(str) != false;
-}
-
-function isNullOrUndefined(val) {
-    return val === null || val === undefined;
-}
+}   
 
 let previousEl;
 function change(x) {

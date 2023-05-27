@@ -50,14 +50,35 @@
                 <div class="inputBox">
                     <input type="text" placeholder="Stadt" required>
                 </div>  
-                <div class="inputBox">
+                <!--<div class="inputBox">
                     <input type="text" placeholder="Bundesland" required>
+                </div>-->
+                <div class="inputBox">
+                    <select  required>
+                        <option value="" selected hidden >Bundesland</option>
+                        <option value="Baden-Württemberg">Baden-Württemberg</option>
+                        <option value="Bayern">Bayern</option>
+                        <option value="Berlin">Berlin</option>
+                        <option value="Brandenburg">Brandenburg</option>
+                        <option value="Bremen">Bremen</option>
+                        <option value="Hamburg">Hamburg</option>
+                        <option value="Hessen">Hessen</option>
+                        <option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+                        <option value="Niedersachsen">Niedersachsen</option>
+                        <option value="Nordrhein-Westfalen">Nordrhein-Westfalen</option>
+                        <option value="Rheinland-Pfalz">Rheinland-Pfalz</option>
+                        <option value="Saarland">Saarland</option>
+                        <option value="Sachsen">Sachsen</option>
+                        <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+                        <option value="Schleswig-Holstein">Schleswig-Holstein</option>
+                        <option value="Thüringen">Thüringen</option>
+                    </select>
                 </div>
 
                 <h3 class="title" >Zahlungsart</h3>
-                    <input type="radio" id="paypal" name="payment" value="PayPal" class="inputradio" checked onclick="showBoxes1()">
+                    <input type="radio" id="paypal" name="payment" value="PayPal" class="inputradio" checked onclick="showBoxes()">
                     <label for="paypal">PayPal <img src="http://localhost:8000/startseite/paypal.jpg" alt="paypallogo"></label><br>
-                    <input type="radio" id="kreditkarte" name="payment" value="kreditkarte" class="inputradio" onclick="showBoxes2()">
+                    <input type="radio" id="kreditkarte" name="payment" value="kreditkarte" class="inputradio" onclick="showBoxes()">
                     <label for="kreditkarte">Kreditkartenzahlung</label>
                     <div id="paypalbox">
                         <div class="inputBox">
@@ -91,7 +112,6 @@
                 <p>Geschäftsführer</p>
                 <p>Kontakt</p>
                 <p>Adresse</p>
-                
             </div>
 
             <div class="impressum2">
@@ -124,4 +144,6 @@
             </div>
         </footer>
         <script src="Zahlungsseite.js"></script>
+        <script src="Hilfsfunktionen.js"></script>
     </body>
+</html>
