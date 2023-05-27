@@ -1,6 +1,6 @@
 const helper = require('../helper.js');
 
-class ReservierungsitzeDao {
+class FilmdatumDao {
 
     constructor(dbConnection) {
         this._conn = dbConnection;
@@ -11,7 +11,7 @@ class ReservierungsitzeDao {
     }
 
     loadById(id) {
-        var sql = 'SELECT * FROM Reservierungsitze WHERE id=?';
+        var sql = 'SELECT * FROM Filmdatum WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -22,7 +22,7 @@ class ReservierungsitzeDao {
     }
 
     loadAll() {
-        var sql = 'SELECT * FROM Reservierungsitze';
+        var sql = 'SELECT * FROM Filmdatum';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
@@ -33,7 +33,7 @@ class ReservierungsitzeDao {
     }
 
     exists(id) {
-        var sql = 'SELECT COUNT(id) AS cnt FROM Reservierungsitze WHERE id=?';
+        var sql = 'SELECT COUNT(id) AS cnt FROM Filmdatum WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -43,10 +43,10 @@ class ReservierungsitzeDao {
         return false;
     }
 
-    create(Name = '', Datum = '', Platzid = '', Status = '') {
-        var sql = 'INSERT INTO Reservierungsitze (Name, Datum, Platzid, Status) VALUES (?,?,?,?)';
+    create(Name = '', Datum = '') {
+        var sql = 'INSERT INTO Filmdatum (Name, Datum) VALUES (?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [Name, Datum, Platzid, Status];
+        var params = [Name, Datum];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -55,10 +55,10 @@ class ReservierungsitzeDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(ID, Name = '', Datum = '', Platzid = '', Status = '') {
-        var sql = 'UPDATE Reservierungsitze SET Name=?, Datum=?, Platzid=?, Status=? WHERE id=?';
+    update(ID, Name = '', Datum = '') {
+        var sql = 'UPDATE Filmdatum SET Name=?, Datum=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [Name, Datum, Platzid, Status, ID];
+        var params = [Name, Datum, ID];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -69,7 +69,7 @@ class ReservierungsitzeDao {
 
     delete(id) {
         try {
-            var sql = 'DELETE FROM Reservierungsitze WHERE id=?';
+            var sql = 'DELETE FROM Filmdatum WHERE id=?';
             var statement = this._conn.prepare(sql);
             var result = statement.run(id);
 
@@ -83,8 +83,8 @@ class ReservierungsitzeDao {
     }
 
     toString() {
-        console.log('ReservierungsitzeDao [_conn=' + this._conn + ']');
+        console.log('FilmdatumDao [_conn=' + this._conn + ']');
     }
 }
 
-module.exports = ReservierungsitzeDao;
+module.exports = FilmdatumDao;

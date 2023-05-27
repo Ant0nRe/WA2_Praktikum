@@ -1,6 +1,6 @@
 const helper = require('../helper.js');
 
-class ReservierungsitzeDao {
+class ReserviererDao {
 
     constructor(dbConnection) {
         this._conn = dbConnection;
@@ -11,7 +11,7 @@ class ReservierungsitzeDao {
     }
 
     loadById(id) {
-        var sql = 'SELECT * FROM Reservierungsitze WHERE id=?';
+        var sql = 'SELECT * FROM Reservierer WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -22,7 +22,7 @@ class ReservierungsitzeDao {
     }
 
     loadAll() {
-        var sql = 'SELECT * FROM Reservierungsitze';
+        var sql = 'SELECT * FROM Reservierer';
         var statement = this._conn.prepare(sql);
         var result = statement.all();
 
@@ -33,7 +33,7 @@ class ReservierungsitzeDao {
     }
 
     exists(id) {
-        var sql = 'SELECT COUNT(id) AS cnt FROM Reservierungsitze WHERE id=?';
+        var sql = 'SELECT COUNT(id) AS cnt FROM Reservierer WHERE id=?';
         var statement = this._conn.prepare(sql);
         var result = statement.get(id);
 
@@ -43,10 +43,10 @@ class ReservierungsitzeDao {
         return false;
     }
 
-    create(Name = '', Datum = '', Platzid = '', Status = '') {
-        var sql = 'INSERT INTO Reservierungsitze (Name, Datum, Platzid, Status) VALUES (?,?,?,?)';
+    create(Vorname = '', Nachname = '', Email = '', Strasse = '', PLZ = 1, Stadt = '', Bundesland = '', Zahlungsart = '', Filmname = '', Filmdatum = '', Filmsitze = '') {
+        var sql = 'INSERT INTO Reservierer (Vorname, Nachname, Email, Strasse, PLZ, Stadt, Bundesland, Zahlungsart, Filmname, Filmdatum, Filmsitze) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
         var statement = this._conn.prepare(sql);
-        var params = [Name, Datum, Platzid, Status];
+        var params = [Vorname, Nachname, Email, Strasse, PLZ, Stadt, Bundesland, Zahlungsart, Filmname, Filmdatum, Filmsitze];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -55,10 +55,10 @@ class ReservierungsitzeDao {
         return this.loadById(result.lastInsertRowid);
     }
 
-    update(ID, Name = '', Datum = '', Platzid = '', Status = '') {
-        var sql = 'UPDATE Reservierungsitze SET Name=?, Datum=?, Platzid=?, Status=? WHERE id=?';
+    update(ID, Vorname = '', Nachname = '', Email = '', Strasse = '', PLZ = 1, Stadt = '', Bundesland = '', Zahlungsart = '', Filmname = '', Filmdatum = '', Filmsitze = '') {
+        var sql = 'UPDATE Reservierer SET Vorname=?, Nachname=?, Email=?, Strasse=?, PLZ=?, Stadt=?, Bundesland=?, Zahlungsart=?, Filmname=?, Filmdatum=?, Filmsitze=? WHERE id=?';
         var statement = this._conn.prepare(sql);
-        var params = [Name, Datum, Platzid, Status, ID];
+        var params = [Vorname, Nachname, Email, Strasse, PLZ, Stadt, Bundesland, Zahlungsart, Filmname, Filmdatum, Filmsitze, ID];
         var result = statement.run(params);
 
         if (result.changes != 1) 
@@ -69,7 +69,7 @@ class ReservierungsitzeDao {
 
     delete(id) {
         try {
-            var sql = 'DELETE FROM Reservierungsitze WHERE id=?';
+            var sql = 'DELETE FROM Reservierer WHERE id=?';
             var statement = this._conn.prepare(sql);
             var result = statement.run(id);
 
@@ -83,8 +83,8 @@ class ReservierungsitzeDao {
     }
 
     toString() {
-        console.log('ReservierungsitzeDao [_conn=' + this._conn + ']');
+        console.log('ReserviererDao [_conn=' + this._conn + ']');
     }
 }
 
-module.exports = ReservierungsitzeDao;
+module.exports = ReserviererDao;
