@@ -53,12 +53,14 @@ serviceRouter.post('/reservierungsitze', function(request, response) {
     console.log('Service Reservierungsitze: Client requested creation of new record');
 
     var errorMsgs=[];
-    if (helper.isUndefined(request.body.titel)) 
-        errorMsgs.push('titel fehlt');
-    if (helper.isUndefined(request.body.platzid)) 
-        errorMsgs.push('platzid fehlt');
-    if (helper.isUndefined(request.body.status)) 
-        errorMsgs.push('status fehlt');
+    if (helper.isUndefined(request.body.Name)) 
+        errorMsgs.push('Name fehlt');
+    if (helper.isUndefined(request.body.Datum)) 
+        errorMsgs.push('Datum fehlt');
+    if (helper.isUndefined(request.body.Platzid)) 
+        errorMsgs.push('Platzid fehlt');
+    if (helper.isUndefined(request.body.Status)) 
+        errorMsgs.push('Status fehlt');
     
     if (errorMsgs.length > 0) {
         console.log('Service Reservierungsitze: Creation not possible, data missing');
@@ -68,7 +70,7 @@ serviceRouter.post('/reservierungsitze', function(request, response) {
 
     const reservierungsitzeDao = new ReservierungsitzeDao(request.app.locals.dbConnection);
     try {
-        var obj = reservierungsitzeDao.create(request.body.titel, request.body.platzid, request.body.status);
+        var obj = reservierungsitzeDao.create(request.body.Name, request.body.Datum, request.body.Platzid, request.body.Status);
         console.log('Service Reservierungsitze: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
@@ -81,14 +83,16 @@ serviceRouter.put('/reservierungsitze', function(request, response) {
     console.log('Service Reservierungsitze: Client requested update of existing record');
 
     var errorMsgs=[];
-    if (helper.isUndefined(request.body.id)) 
-        errorMsgs.push('id fehlt');
-    if (helper.isUndefined(request.body.titel)) 
-        errorMsgs.push('titel fehlt');
-    if (helper.isUndefined(request.body.platzid)) 
-        errorMsgs.push('platzid fehlt');
-    if (helper.isUndefined(request.body.status)) 
-        errorMsgs.push('status fehlt');
+    if (helper.isUndefined(request.body.ID)) 
+        errorMsgs.push('ID fehlt');
+    if (helper.isUndefined(request.body.Name)) 
+        errorMsgs.push('Name fehlt');
+    if (helper.isUndefined(request.body.Datum)) 
+        errorMsgs.push('Datum fehlt');
+    if (helper.isUndefined(request.body.Platzid)) 
+        errorMsgs.push('Platzid fehlt');
+    if (helper.isUndefined(request.body.Status)) 
+        errorMsgs.push('Status fehlt');
 
     if (errorMsgs.length > 0) {
         console.log('Service Reservierungsitze: Update not possible, data missing');
@@ -98,8 +102,8 @@ serviceRouter.put('/reservierungsitze', function(request, response) {
 
     const reservierungsitzeDao = new ReservierungsitzeDao(request.app.locals.dbConnection);
     try {
-        var obj = reservierungsitzeDao.update(request.body.id, request.body.titel, request.body.platzid, request.body.status);
-        console.log('Service Reservierungsitze: Record updated, id=' + request.body.id);
+        var obj = reservierungsitzeDao.update(request.body.ID, request.body.Name, request.body.Datum, request.body.Platzid, request.body.Status);
+        console.log('Service Reservierungsitze: Record updated, id=' + request.body.ID);
         response.status(200).json(obj);
     } catch (ex) {
         console.error('Service Reservierungsitze: Error updating record by id. Exception occured: ' + ex.message);
