@@ -36,26 +36,23 @@
                 <h3 class="title">Rechnungsdetails</h3>
                 <div class="twoinputBox">
                     <input type="text" placeholder="Vorname" id="leftbox" required>
-                    <input type="text" placeholder="Nachname" required>
+                    <input type="text" placeholder="Nachname" id="rightbox" required>
                 </div> 
                 <div class="inputBox">
-                    <input type="email" placeholder="E-Mail-Adresse" required>  
+                    <input type="email" placeholder="E-Mail-Adresse" id='email' required>  
                 </div>  
                 <div class="inputBox">
-                    <input type="text" placeholder="Straße - Hausnummer" required>
+                    <input type="text" placeholder="Straße - Hausnummer" id="strasse" required>
                 </div>                        
                 <div class="inputBox">
-                    <input type="number" placeholder="Postleitzahl" required>
+                    <input type="number" placeholder="Postleitzahl" id="plz" required>
                 </div> 
                 <div class="inputBox">
-                    <input type="text" placeholder="Stadt" required>
+                    <input type="text" placeholder="Stadt" id="stadt" required>
                 </div>  
-                <!--<div class="inputBox">
-                    <input type="text" placeholder="Bundesland" required>
-                </div>-->
-                <div class="inputBox">
-                    <select  required>
-                        <option value="" selected hidden >Bundesland</option>
+                <div class="inputBox" >
+                    <select  required id="bundesland">
+                        <option value="" selected hidden>Bundesland</option>
                         <option value="Baden-Württemberg">Baden-Württemberg</option>
                         <option value="Bayern">Bayern</option>
                         <option value="Berlin">Berlin</option>
@@ -83,26 +80,26 @@
                     <div id="paypalbox">
                         <div class="inputBox">
                             <span>E-Mail-Adresse:</span>
-                            <input type="email" placeholder="E-Mail-Adresse" required>  
+                            <input type="email" placeholder="E-Mail-Adresse" id="emailpaypal"required>  
                         </div>  
                     </div>
                     <div id="kreditkartenbox">
                         <div class="inputBox">
                             <span>Kartennummer:</span>
-                            <input type="number" placeholder="1111 2222 3333 4444" required>
+                            <input type="number" placeholder="1111 2222 3333 4444" id="kn" required>
                         </div> 
                         <div class="inputBox">
                             <span>Gültig bis:</span>
-                            <input type="text" placeholder="MM/JJ" pattern="MM/JJ" title="Falsche Eingabe" required>
+                            <input type="text" placeholder="MM/JJ" id="datum" required>
                         </div>
                         <div class="inputBox">
                             <span>CVC:</span>
-                            <input type="number" placeholder="Prüfziffer" required>
+                            <input type="number" placeholder="Prüfziffer" id="cvc" required>
                         </div> 
                     </div>
-                    <a href="Bestaetigung.html">
+                    <!--<a href="Bestaetigung.html">-->
                         <input type="button" value="Zahlungspflichtig bestellen" class="submit-btn">
-                    </a>
+                    <!--</a>-->
             </form>  
         </div>
 

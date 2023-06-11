@@ -108,15 +108,6 @@ input[type=number] {
     font-size: 14px;
 }
 
-select {
-    color: #5e5e5e;
-}
-
-select option {
-    font-size: 14px;
-    color: black;
-}
-
 option:checked {
     color: black;
 }
@@ -235,4 +226,8 @@ th,td {
 td {
     padding-left: 15px;
     font-weight: 400;
+}
+
+.error {
+    background-color: rgb(215, 204, 194);
 }

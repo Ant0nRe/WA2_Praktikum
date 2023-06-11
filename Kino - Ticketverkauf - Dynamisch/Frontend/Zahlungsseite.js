@@ -32,7 +32,13 @@ $(document).ready(function() {
     $('.container').append(section);
 
     const button = document.querySelector('.submit-btn');
-    button.addEventListener('click', () => { 
+    button.addEventListener('click', (e) => { 
+        vF = validateForm();
+        if (vF == 0) {
+            alert("Falsche Eingabe");
+        }
+        else {
+        e.preventDefault();
         const form = document.querySelector('#form');
         const formData = {
             Vorname: form.elements[0].value,
@@ -61,6 +67,10 @@ $(document).ready(function() {
             .fail(function (jqXHR, statusText, error) {
                 console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
         });
+        window.location.href = 'Bestaetigung.html';
+
+        }
+
     });
 });
 
@@ -79,4 +89,82 @@ function showBoxes() {
         box.style.display = "none";
         paypalCheckbox.checked = false;
     }
+}
+
+function validateForm() {
+    const vorname = document.getElementById('leftbox').value;
+    const nachname = document.getElementById('rightbox').value;
+    const email = document.getElementById('email').value;
+    const strasse = document.getElementById('strasse').value;
+    const plz = document.getElementById('plz').value;
+    const stadt = document.getElementById('stadt').value;
+    const dropdown = document.querySelector('.inputBox select');
+    const emailpaypal = document.getElementById('emailpaypal').value;
+    const kn = document.getElementById('kn').value;
+    const datum = document.getElementById('datum').value;
+    const cvc = document.getElementById('cvc').value;
+    const paypalCheckbox = document.getElementById('paypal');
+    const kreditkarteCheckbox = document.getElementById('kreditkarte');
+
+    let errorField = [];
+
+    const namePattern = /^[a-zA-ZäöüÄÖÜß\s]+$/
+    if (!namePattern.test(vorname)) {
+        errorField.push('leftbox');
+    }
+    if (!namePattern.test(nachname)) {
+        errorField.push('rightbox');
+    }
+
+    const emailPattern = /[a-zA-ZäÄöÖüÜß0-9._%+\-!?#$&'/=^`|{}~]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}/;
+    if (!emailPattern.test(email)) {
+        errorField.push('email');
+    }
+
+    const strassePattern = /^[a-zA-Z0-9äöüÄÖÜß\s\-\.]+$/;
+    if (!strassePattern.test(strasse)) {
+        errorField.push('strasse');
+    }
+
+    const plzPattern = /^[0-9]{5}$/;
+    if (!plzPattern.test(plz)) {
+        errorField.push('plz');
+    }
+
+    const stadtPattern = /^[a-zA-ZäöüÄÖÜß\s\-\.]+$/;
+    if (!stadtPattern.test(stadt)) {
+        errorField.push('stadt');
+    }
+
+    if (dropdown.value === '') {
+        errorField.push('bundesland');
+    }
+
+    cvcPattern = /^(\d{12,19})$/;
+    knPattern = /^(\d{13,19})$/;
+    datumPattern = /^(0[1-9]|1[0-2])\/[0-9]{2}$/
+    if(paypalCheckbox.checked) {
+        if(!emailPattern.test(emailpaypal)) {
+            errorField.push('emailpaypal');
+        }
+    }
+    if(kreditkarteCheckbox.checked) {
+        if(!cvcPattern.test(cvc)) {
+            errorField.push('cvc');
+        }
+        if(!knPattern.test(kn)) {
+            errorField.push('kn');
+        }
+        if(!datumPattern.test(datum)) {
+            errorField.push('datum');
+        }
+    }
+
+    if (errorField.length > 0) {
+        errorField.forEach(field => {
+          document.getElementById(field).classList.add('error');
+        });
+        return false;
+    }
+    return true;
 }
