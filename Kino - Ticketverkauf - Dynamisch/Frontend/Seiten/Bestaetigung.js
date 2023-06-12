@@ -136,11 +136,19 @@ function showMiddleSection(response) {
                                         tr4.append($('<td>').text('Gesamt:'));
                                         tr4.append($('<td>').text(gesamtpreis.toString().replace(".",",") + '€'));
 
-                div2.append($('<img class="img-fluid qr-code" src="http://localhost:8000/startseite/QR-Code.png" alt="qr">'));
+                //div2.append($('<img class="img-fluid qr-code" src="http://localhost:8000/startseite/QR-Code.png" alt="qr">'));
+    
+                div2.append($('<div class="img-fluid qr-code" id="qr-code">'));
+           
                 div2.append(footer);
                     footer.append(div18);
                         div18.append($('<p>').text('Wir sagen Danke, Ihr Kino Team!'));
             $('BODY').append(div1);
+            const qrCode = new QRCode(document.getElementById("qr-code"), {
+                text: "localhost:3000/Bestaetigung.html",
+                width: 155,
+                height: 155,
+              });
         }
     }
 }
