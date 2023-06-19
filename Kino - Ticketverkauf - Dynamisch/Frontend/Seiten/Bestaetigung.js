@@ -49,17 +49,12 @@ function showMiddleSection(response) {
             const div15 = $('<div class="row">');
             const div16 = $('<div class="col-8">');
             const div17 = $('<div class="col-4">');
-            const table2 = $('<table class="table border-0 table-hover">');
+            const table2 = $('<table class="table col-8 float-right">');
             const tr2 = $('<tr>');
-            const tr3 = $('<tr>');
-            const tr4 = $('<tr>');
-            const tfoot = $('<tfoot>');
             const footer = $('<footer>');
             const div18 = $('<div>');
 
-            const ticketpreis = Number(getSessionItem('gesamtpreis')).toFixed(2);
-            const mwstpreis = ((Number(ticketpreis)/100)*7).toString();
-            const gesamtpreis = (Number(ticketpreis) + Number(mwstpreis));
+            const gesamtpreis = Number(getSessionItem('gesamtpreis')).toFixed(2);
 
             let today = new Date();
             const dd = String(today.getDate()).padStart(2, '0');
@@ -126,17 +121,8 @@ function showMiddleSection(response) {
                         div15.append(div17);
                             div17.append(table2);
                                 table2.append(tr2);
-                                    tr2.append($('<td>').text('Zwischensumme:'));
-                                    tr2.append($('<td>').text(ticketpreis.toString().replace(".",",") + '€'));
-                                table2.append(tr3);
-                                    tr3.append($('<td>').text('inkl. MWST:'));
-                                    tr3.append($('<td>').text(mwstpreis.toString().replace(".",",") + '€'));
-                                table2.append(tfoot);
-                                    tfoot.append(tr4);
-                                        tr4.append($('<td>').text('Gesamt:'));
-                                        tr4.append($('<td>').text(gesamtpreis.toString().replace(".",",") + '€'));
-
-                //div2.append($('<img class="img-fluid qr-code" src="http://localhost:8000/startseite/QR-Code.png" alt="qr">'));
+                                    tr2.append($('<td>').text('Gesamt:'));
+                                    tr2.append($('<td>').text(gesamtpreis.toString().replace(".",",") + '€'));
     
                 div2.append($('<div class="img-fluid qr-code" id="qr-code">'));
            
@@ -144,6 +130,7 @@ function showMiddleSection(response) {
                     footer.append(div18);
                         div18.append($('<p>').text('Wir sagen Danke, Ihr Kino Team!'));
             $('BODY').append(div1);
+
             const qrCode = new QRCode(document.getElementById("qr-code"), {
                 text: "localhost:3000/Bestaetigung.html",
                 width: 155,

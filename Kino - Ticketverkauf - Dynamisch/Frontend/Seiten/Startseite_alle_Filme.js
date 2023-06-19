@@ -62,9 +62,10 @@ function loadMiddleSection(response1, response2) {
                 divimg.append('<img src="http://localhost:8000/' + obj1.Bildpfad + '">');
 
             // Uhrzeit
+            const ticketpreis = obj1.Preis.toFixed(2).toString().replace(".",",");
             div.append(divuhr);
                 divuhr.append($('<h2>').text('Uhrzeit'));
-                divuhr.append($('<p>').text('Preis: ' + obj1.Preis + ',00€ pro Ticket'));
+                divuhr.append($('<p>').text('Preis: ' + ticketpreis + '€ pro Ticket'));
 
                 for (let k = 0; k < date.length; k++) {
                     const parts = date[k].split(' ');

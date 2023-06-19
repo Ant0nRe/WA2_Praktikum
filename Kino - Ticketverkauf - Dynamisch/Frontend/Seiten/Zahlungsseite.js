@@ -32,13 +32,12 @@ $(document).ready(function() {
     $('.container').append(section);
 
     const button = document.querySelector('.submit-btn');
-    button.addEventListener('click', (e) => { 
+    button.addEventListener('click', () => { 
         vF = validateForm();
         if (vF == 0) {
             alert("Falsche Eingabe");
         }
         else {
-        e.preventDefault();
         const form = document.querySelector('#form');
         const formData = {
             Vorname: form.elements[0].value,
@@ -67,7 +66,8 @@ $(document).ready(function() {
             .fail(function (jqXHR, statusText, error) {
                 console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
         });
-        window.location.href = 'Bestaetigung.html';
+        window.open('Bestaetigung.html').focus();
+        window.location.href = 'Startseite.html';
 
         }
 
@@ -140,7 +140,7 @@ function validateForm() {
         errorField.push('bundesland');
     }
 
-    cvcPattern = /^(\d{12,19})$/;
+    cvcPattern = /^[0-9]{3,4}$/;
     knPattern = /^(\d{13,19})$/;
     datumPattern = /^(0[1-9]|1[0-2])\/[0-9]{2}$/
     if(paypalCheckbox.checked) {

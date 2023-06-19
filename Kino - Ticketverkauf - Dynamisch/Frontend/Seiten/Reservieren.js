@@ -35,9 +35,10 @@ function showMiddleSection(response) {
     let objct = []; 
 
     // Informationen zum Film
+    const ticketpreis = film.Preis.toFixed(2).toString().replace(".",",");
     divboxc1.append($('<h2>').text(film.Name));
     divboxc1.append(divlaufz);
-        divlaufz.append($('<p>').text('Preis: ' + film.Preis + ',00€ pro Ticket'));
+        divlaufz.append($('<p>').text('Preis: ' + ticketpreis + '€ pro Ticket'));
     divboxc1.append(divpreis);
         divpreis.append($('<p>').text('Laufzeit: ' + film.Dauer + ' min'));
     divboxc1.append(divfsk);
@@ -45,7 +46,6 @@ function showMiddleSection(response) {
     divboxc1.append($('<h4 class="uhrzeit">').text("Bitte Uhrzeit auswählen"));
         
     //Uhrzeit und Sitzauswahl
-
     for (let i = 0; i < data.length; i++) {
         const parts = data[i].split(' ');
         const dataPart = parts[0] + ' ' + parts[1];
@@ -180,6 +180,7 @@ function showMiddleSection(response) {
                     }
                 }
             }
+            console.log(IdArr);
             setJSONSessionItem("platz", elementIds);
             setSessionItem("gesamtpreis", selectedpreis);
             setSessionItem("date", boxtimes);

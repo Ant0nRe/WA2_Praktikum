@@ -65,9 +65,10 @@ function loadMiddleSection(response1, response2) {
                 divimg.append('<img src="http://localhost:8000/' + obj1.Bildpfad + '">');
 
             // Uhrzeit
+            const ticketpreis = obj1.Preis.toFixed(2).toString().replace(".",",");
             div.append(divuhr);
                 divuhr.append($('<h2>').text('Uhrzeit'));
-                divuhr.append($('<p>').text('Preis: ' + obj1.Preis + ',00€ pro Ticket'));
+                divuhr.append($('<p>').text('Preis: ' + ticketpreis + '€ pro Ticket'));
 
                 for (let k = 0; k < date.length; k++) {
                     let parts = date[k].split(' ');
@@ -113,7 +114,7 @@ function loadMiddleSection(response1, response2) {
 
         const reservations = document.querySelectorAll('.reservation');
         reservations.forEach(reservation  =>  {
-            reservation.addEventListener('click', (e) => {
+            reservation.addEventListener('click', () => {
                 for (let m = 0; m < response1.length; m++) {
                     const obj1 = response1[m];
                     if (obj1.ID == slideIndex) {
